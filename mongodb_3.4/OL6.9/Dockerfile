@@ -52,16 +52,14 @@ LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.name="MongoDB" \
       org.label-schema.description="MongoDB 3.4 for Oracle Linux 6"
 
-# Building the YUM repository file to ensure we can use the
-# MongoDB repository to install MongoDB
-#RUN cat > /etc/yum.repos.d/mongodb-org-3.4.repo << EOL \
-#    [mongodb-org-3.4] \
-#    name=MongoDB Repository \
-#    baseurl=http://repo.mongodb.org/yum/redhat/6/mongodb-org/3.4/x86_64 \
-#    gpgcheck=1 \
-#    enabled=1 \
-#    gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc \
-#    EOL 
+# Ensure we have wget, which we will use in a second
+# step to download some configuration files
+RUN yum -y install wget ; yum clean all
+
+# Download the YUM repository file to ensure we can use 
+# the MongoDB repository to install MongoDB. We use the 
+# .repo file as it stored on the github repository for
+# this Dockerfile
 RUN wget https://raw.githubusercontent.com/louwersj/docker_mongodb_ol6/master/mongodb_3.4/OL6.9/mongodb-org-3.4.repo -O /etc/yum.repos.d/mongodb-org-3.4.repo
 
 # install MongoDB with yum and clean yum
