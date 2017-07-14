@@ -49,8 +49,8 @@ LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.version=$VERSION \
       org.label-schema.vcs-url=$VCS_URL \
       org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.name="openJDK" \
-      org.label-schema.description="Java OpenJDK 1.7.0 on Oracle Linux 6"
+      org.label-schema.name="MongoDB" \
+      org.label-schema.description="MongoDB 3.4 for Oracle Linux 6"
 
 # Building the YUM repository file to ensure we can use the
 # MongoDB repository to install MongoDB
